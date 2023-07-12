@@ -34,7 +34,10 @@ class _OnboardingState extends State<Onboarding>
         Column(
           children: [
             Expanded(
-              child: TabBarView(controller: controller, children: [
+              child: TabBarView(
+                  physics: NeverScrollableScrollPhysics(),
+                  controller: controller,
+                  children: [
                 ...onboardData
                     .map(
                       (data) => Container(
@@ -82,10 +85,13 @@ class _OnboardingState extends State<Onboarding>
           right: 20,
           child: Align(
             alignment: Alignment.topRight,
-            child: Text(
-              'Skip',
-              textAlign: TextAlign.right,
-              style: Get.textTheme.bodyMedium,
+            child: GestureDetector(
+              onTap: () => Get.to(GetStarted()),
+              child: Text(
+                'Skip',
+                textAlign: TextAlign.right,
+                style: Get.textTheme.bodyMedium,
+              ),
             ),
           ),
         ),
@@ -100,15 +106,18 @@ class _OnboardingState extends State<Onboarding>
                       (index) => buildDot(index, currentIndex)),
                 ),
                 SizedBox(height: 50),
-                MainButton(
-                  text: 'Next',
-                  onPressed: () {
-                    if (currentIndex < 2) {
-                      controller.animateTo(currentIndex + 1);
-                    } else {
-                      Get.to(GetStarted());
-                    }
-                  },
+                SizedBox(
+                  width: Get.width * 0.85,
+                  child: MainButton(
+                    text: 'Next',
+                    onPressed: () {
+                      if (currentIndex < 2) {
+                        controller.animateTo(currentIndex + 1);
+                      } else {
+                        Get.to(GetStarted());
+                      }
+                    },
+                  ),
                 ),
                 SizedBox(height: 30),
               ],

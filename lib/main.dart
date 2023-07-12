@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:grabby/colors/colors.dart';
 import 'package:grabby/screens/onboarding/onboarding.dart';
 
 void main() {
@@ -16,6 +17,10 @@ class MyApp extends StatelessWidget {
       title: 'Grabby',
       theme: ThemeData(
         fontFamily: 'Poppins',
+      
+        textSelectionTheme: TextSelectionThemeData(
+          cursorColor: AppColors.mainColor,
+        ),
         scaffoldBackgroundColor: Colors.white,
         primarySwatch: Colors.blue,
         textTheme: TextTheme(

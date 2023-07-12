@@ -3,9 +3,11 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:grabby/colors/colors.dart';
 import 'package:grabby/components/widgets.dart';
+import 'package:grabby/screens/auth/sign_in.dart';
 
 class GetStarted extends StatelessWidget {
   const GetStarted({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +15,55 @@ class GetStarted extends StatelessWidget {
       backgroundColor: AppColors.mainColor,
       body: Column(
         children: [
+          Spacer(),
+          Image.asset(
+            'assets/images/logo.png',
+            height: 94,
+            width: 73,
+          ),
+          SizedBox(height: 12),
+          SizedBox(
+            width: 183,
+            child: Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: 'Let’s make shopping ',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15.55,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  TextSpan(
+                    text: 'fun ',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15.55,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  TextSpan(
+                    text: 'and ',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15.55,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  TextSpan(
+                    text: 'easy',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15.55,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
           Spacer(),
           Container(
             alignment: Alignment.bottomCenter,
@@ -38,7 +89,23 @@ class GetStarted extends StatelessWidget {
                   style: Get.textTheme.bodySmall,
                 ),
                 SizedBox(height: 40),
-                MainButton(onPressed: () {}, text: 'Log in')
+                SizedBox(
+                    width: Get.width * 0.85,
+                    child: MainButton(onPressed: () {}, text: 'Log in')),
+                SizedBox(height: 10),
+                SizedBox(
+                  width: Get.width * 0.85,
+                  child: MainButton.outline(
+                      onPressed: () {
+                        Get.bottomSheet(
+                          isDismissible: false,
+                          barrierColor: Colors.transparent,
+                          isScrollControlled: true,
+                          SignInSheet(),
+                        );
+                      },
+                      text: 'Sign up'),
+                ),
               ],
             ),
           ),
